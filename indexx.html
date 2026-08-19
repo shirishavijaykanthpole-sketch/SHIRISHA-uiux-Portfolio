@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIRI — Hero Index Core</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+    <style>
+        /* ==========================================================================
+           GLOBAL DESIGN SYSTEM STYLES & BEHAVIORS
+           ========================================================================== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            background-color: #000000 !important;
+            color: #FFFFFF;
+            font-family: 'Kanit', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        .font-serif-italic {
+            font-family: 'Instrument Serif', serif;
+            font-style: italic;
+        }
+
+        /* --- ARROW BOUNCE MOTION ON HOVER --- */
+        .simple-scroll-down {
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .simple-scroll-down:hover {
+            transform: translateY(5px);
+            color: #FF0000;
+        }
+
+        /* --- FADE IN SCROLL VISIBILITY STRUCT --- */
+        .fade-in-scaffold {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.25, 0.1, 0.25, 1), 
+                        transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1);
+            will-change: opacity, transform;
+        }
+        .fade-in-scaffold.is-revealed {
+            opacity: 1;
+            transform: translateY(0) translateX(0);
+        }
+
+        .image-render-crisp {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+        }
+
+        /* --- SINGLE LINE MARQUEE SPEED TRACK --- */
+        .marquee-track-left {
+            display: flex;
+            width: max-content;
+            animation: scrollLeft 28s linear infinite;
+            will-change: transform;
+        }
+
+        @keyframes scrollLeft {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-33.33%, 0, 0); }
+        }
+
+        /* --- TEXT REVEAL KINETIC ANIMATION CODES --- */
+        .reveal-char-node {
+            opacity: 0.2;
+            transition: opacity 0.1s linear;
+            will-change: opacity;
+        }
+        .reveal-char-node.active-glow {
+            opacity: 1;
+            color: #D7E2EA;
+            text-shadow: 0 0 8px rgba(215, 226, 234, 0.2);
+        }
+        
+        /* --- BRAND HEADLINE TEXT RED GRADIENT STRUCTURE --- */
+        .hero-heading-red {
+            background: linear-gradient(180deg, #FF1E1E 0%, #850000 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- ASYMMETRIC IMAGE CARD ZOOM EFFECT --- */
+        .project-grid-card {
+            background-color: #F8F8F8;
+            border: 1px solid #E4E4E7;
+            transition: border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            text-decoration: none !important;
+            display: flex;
+            cursor: pointer;
+        }
+        .project-grid-card:hover {
+            border-color: rgba(255, 30, 30, 0.5);
+            transform: translateY(-4px);
+        }
+        .zoom-container img {
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .project-grid-card:hover .zoom-container img {
+            transform: scale(1.03);
+        }
+        .project-grid-card:hover .card-action-arrow {
+            color: #FF0000;
+            transform: translate(2px, -2px);
+        }
+
+        /* --- CONTACT TRANSITION BAR PULSE & GLOW --- */
+        .portal-bar-glow {
+            background: radial-gradient(circle at 50% 0%, rgba(255, 0, 0, 0.12) 0%, transparent 70%);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO VIEWPORT -->
+    <section class="relative h-screen w-full flex flex-col justify-between overflow-hidden bg-[#000000]">
+        
+        <header class="w-full relative z-40 flex justify-between items-center px-6 md:px-10 pt-4 md:pt-5 max-w-7xl mx-auto fade-in-scaffold is-revealed" style="transform: translateY(0px);">
+            <div class="flex gap-8">
+                <a href="#about" class="text-zinc-400 font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.3rem] transition-colors duration-200 hover:text-white">About</a>
+                <a href="#services" class="text-zinc-400 font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.3rem] transition-colors duration-200 hover:text-white">Services</a>
+            </div>
+            <div class="flex gap-8">
+                <a href="#experience" class="text-zinc-400 font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.3rem] transition-colors duration-200 hover:text-white">Experience</a>
+                <a href="#projects" class="text-zinc-400 font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.3rem] transition-colors duration-200 hover:text-white">Projects</a>
+                <a href="page7contact.html" class="text-zinc-400 font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.3rem] transition-colors duration-200 hover:text-white">Contact</a>
+            </div>
+        </header>
+
+        <div class="w-full overflow-hidden relative z-0 mt-4 sm:mt-6 md:mt-8 lg:mt-10">
+            <div class="fade-in-scaffold flex flex-col items-center justify-center text-center select-none is-revealed" style="transform: translateY(0px);">
+                <h1 class="font-black uppercase tracking-tight leading-[0.8] w-full text-[10.2vw] sm:text-[10.7vw] md:text-[11.2vw] lg:text-[11.8vw]" style="color: #FF0000;">
+                    Hi, i&apos;m
+                </h1>
+                <h2 class="font-black uppercase tracking-tighter leading-[0.8] w-full text-[11.8vw] sm:text-[12.3vw] md:text-[12.8vw] lg:text-[16vw] -mt-1 sm:-mt-2 md:-mt-3" style="color: #FF0000;">
+                    shirisha
+                </h2>
+                <h3 class="font-black uppercase tracking-tighter leading-[0.8] w-full text-[11.8vw] sm:text-[12.3vw] md:text-[12.8vw] lg:text-[16vw] -mt-1 sm:-mt-2 md:-mt-3" style="color: #FF0000;">
+                    pole
+                </h3>
+            </div>
+        </div>
+
+        <div id="magneticWrapper" class="absolute left-1/2 -translate-x-1/2 z-10 w-[200px] sm:w-[260px] md:w-[320px] lg:w-[380px] top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0" style="will-change: transform;">
+            <div class="fade-in-scaffold is-revealed relative" style="transform: translateY(0px);">
+                <div class="absolute inset-0 bg-gradient-to-b from-zinc-700/20 to-transparent rounded-full filter blur-2xl scale-95 pointer-events-none z-0"></div>
+                <img 
+                    src="siri1.png" 
+                    alt="Shirisha Portrait View" 
+                    class="relative z-10 w-full h-auto object-contain pointer-events-none drop-shadow-[0_15px_35px_rgba(0,0,0,0.95)] drop-shadow-[0_30px_60px_rgba(0,0,0,0.85)] image-render-crisp"
+                />
+            </div>
+        </div>
+
+        <div class="w-full max-w-7xl mx-auto px-6 md:px-10 pb-7 sm:pb-8 md:pb-10 flex justify-between items-end relative z-20">
+            <div class="w-full max-w-[180px] sm:max-w-[240px] md:max-w-[280px] lg:max-w-[340px] text-left fade-in-scaffold is-revealed" style="transform: translateY(0px);">
+                <p class="text-zinc-400 font-light uppercase tracking-wide leading-relaxed text-[11px] sm:text-xs md:text-sm">
+                    I build interfaces that feel structural. Melding raw aesthetic precision with psychological flow, I don’t just arrange layouts—I design human-centered digital ecosystems that clear the noise and command attention.
+                </p>
+            </div>
+
+            <div class="fade-in-scaffold is-revealed flex items-center justify-end" style="transform: translateY(0px);">
+                <a href="#brands" class="simple-scroll-down text-white text-xl md:text-2xl decoration-none select-none focus:outline-none flex flex-col items-center" aria-label="Scroll Down">
+                    <button onclick="document.getElementById('brands').scrollIntoView({behavior: 'smooth'})" class="focus:outline-none" aria-label="Scroll Down">
+                        <i class="bi bi-arrow-down"></i>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BRANDS MARQUEE -->
+    <section id="brands" class="bg-black py-8 sm:py-12 border-t border-b border-zinc-800/50 overflow-hidden select-none w-full relative z-30">
+        <div class="w-full overflow-hidden flex whitespace-nowrap">
+            <div class="marquee-track-left gap-10 sm:gap-16 text-zinc-300 font-bold uppercase tracking-wide text-lg sm:text-xl md:text-2xl lg:text-3xl align-middle items-center">
+                <span class="hover:text-red-600 transition-colors duration-300">WowInfotech Nashik</span>
+                <span class="text-zinc-800 font-light px-1">•</span>
+                <span class="hover:text-red-600 transition-colors duration-300">NoReason Media Sambhajinagar</span>
+                <span class="text-zinc-800 font-light px-1">•</span>
+                <span class="hover:text-red-600 transition-colors duration-300">DNS UK</span>
+                <span class="text-zinc-800 font-light px-1">•</span>
+                <span class="hover:text-red-600 transition-colors duration-300">PHS UK</span>
+                <span class="text-zinc-800 font-light px-1">•</span>
+                <span class="hover:text-red-600 transition-colors duration-300">Young Little Star UK</span>
+                <span class="text-zinc-800 font-light px-1">•</span>
+                
+                <span class="hover:text-red-600 transition-colors duration-300">WowInfotech Nashik</span>
+                <span class="text-zinc-800 font-light px-1">•</span>
+                <span class="hover:text-red-600 transition-colors duration-300">NoReason Media Sambhajinagar</span>
+                <span class="text-zinc-800 font-light px-1">•</span>
+                <span class="hover:text-red-600 transition-colors duration-300">DNS UK</span>
+                <span class="text-zinc-800 font-light px-1">•</span>
+                <span class="hover:text-red-600 transition-colors duration-300">PHS UK</span>
+                <span class="text-zinc-800 font-light px-1">•</span>
+                <span class="hover:text-red-600 transition-colors duration-300">Young Little Star UK</span>
+                <span class="text-zinc-800 font-light px-1">•</span>
+
+                <span class="hover:text-red-600 transition-colors duration-300">WowInfotech Nashik</span>
+                <span class="text-zinc-800 font-light px-1">•</span>
+                <span class="hover:text-red-600 transition-colors duration-300">NoReason Media Sambhajinagar</span>
+                <span class="text-zinc-800 font-light px-1">•</span>
+                <span class="hover:text-red-600 transition-colors duration-300">DNS UK</span>
+                <span class="text-zinc-800 font-light px-1">•</span>
+                <span class="hover:text-red-600 transition-colors duration-300">PHS UK</span>
+                <span class="text-zinc-800 font-light px-1">•</span>
+                <span class="hover:text-red-600 transition-colors duration-300">Young Little Star UK</span>
+                <span class="text-zinc-800 font-light px-1">•</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="relative min-h-screen w-full flex flex-col items-center justify-center bg-[#0C0C0C] px-5 sm:px-8 md:px-10 py-20 pb-32 overflow-hidden z-20">
+        <canvas id="movingDotsCanvas" class="absolute inset-0 w-full h-full pointer-events-none z-10 opacity-70"></canvas>
+
+        <div class="flex flex-col items-center text-center w-full max-w-7xl relative z-20 gap-12 sm:gap-16">
+            <div class="fade-in-scaffold" style="transition-delay: 0s; transform: translateY(40px);">
+                <h2 class="hero-heading-red font-black uppercase tracking-tight text-center text-[clamp(3rem,12vw,160px)] leading-none">
+                    About me
+                </h2>
+            </div>
+            
+            <div id="kineticParagraph" class="text-[#D7E2EA] font-medium leading-relaxed max-w-[560px] flex flex-wrap justify-center text-[clamp(1rem,2vw,1.35rem)]"></div>
+            
+            <div class="fade-in-scaffold" style="margin-top: 0.5rem; transition-delay: 0.2s;">
+                <a href="page7contact.html" class="text-zinc-400 border border-zinc-800 bg-[#050505] px-6 py-3 rounded-full font-medium uppercase tracking-widest text-xs tracking-wider transition-colors hover:text-white hover:border-zinc-500 inline-flex items-center gap-2">
+                    Get In Touch →
+                </a>
+            </div>
+
+            <div class="w-full flex flex-col items-center mt-6 fade-in-scaffold">
+                <h3 class="text-zinc-500 font-light uppercase tracking-[0.25em] text-xs sm:text-sm mb-6 select-none flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse"></span>
+                    my persona
+                </h3>
+
+                <div class="w-full max-w-6xl overflow-hidden rounded-none bg-[#0C0C0C]">
+                    <img 
+                        src="persona.png" 
+                        alt="Shirisha UIUX Persona Mapping Asset" 
+                        class="w-full h-auto object-cover image-render-crisp block"
+                    />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="relative z-30 -mt-8 mx-4 sm:mx-6 md:mx-8 bg-gradient-to-b from-[#090909] to-[#030303] border border-zinc-900 rounded-[40px] md:rounded-[60px] px-6 md:px-12 py-24 sm:py-32 text-white shadow-[0_-20px_50px_rgba(0,0,0,0.8)]">
+        <div class="max-w-6xl mx-auto">
+            <div class="fade-in-scaffold mb-16 sm:mb-24 md:mb-28">
+                <h2 class="hero-heading-red font-black uppercase text-center tracking-tight text-[clamp(3rem,12vw,160px)] leading-none">
+                    Services
+                </h2>
+            </div>
+
+            <div class="flex flex-col gap-6" id="servicesGridScaffold">
+                <div class="group w-full bg-[#121212]/60 border border-zinc-900/80 hover:border-zinc-800 rounded-2xl p-8 sm:p-10 flex flex-col sm:flex-row justify-between items-start gap-4 sm:gap-12 transition-all duration-300 shadow-xl fade-in-scaffold">
+                    <div class="font-black leading-none text-zinc-800 group-hover:text-red-600 transition-colors duration-300 min-w-[100px] text-[clamp(2.5rem,6vw,80px)]">01</div>
+                    <div class="flex flex-col flex-grow gap-3 mt-1">
+                        <h3 class="font-medium uppercase tracking-wide text-[clamp(1.25rem,2vw,1.75rem)] group-hover:text-red-500 transition-colors duration-300">UX Research & Strategy</h3>
+                        <p class="font-light leading-relaxed max-w-3xl text-zinc-400 text-[clamp(0.9rem,1.5vw,1.15rem)]">Decoding user behaviors, psychological blockages, and complex operational flows through competitive audits, data structures, and qualitative persona maps.</p>
+                    </div>
+                </div>
+
+                <div class="group w-full bg-[#121212]/60 border border-zinc-900/80 hover:border-zinc-800 rounded-2xl p-8 sm:p-10 flex flex-col sm:flex-row justify-between items-start gap-4 sm:gap-12 transition-all duration-300 shadow-xl fade-in-scaffold">
+                    <div class="font-black leading-none text-zinc-800 group-hover:text-red-600 transition-colors duration-300 min-w-[100px] text-[clamp(2.5rem,6vw,80px)]">02</div>
+                    <div class="flex flex-col flex-grow gap-3 mt-1">
+                        <h3 class="font-medium uppercase tracking-wide text-[clamp(1.25rem,2vw,1.75rem)] group-hover:text-red-500 transition-colors duration-300">Wireframing & Architecture</h3>
+                        <p class="font-light leading-relaxed max-w-3xl text-zinc-400 text-[clamp(0.9rem,1.5vw,1.15rem)]">Building clean layout schematics and structured dynamic low-fidelity prototypes to establish clean user navigation hierarchy before aesthetic pixel execution.</p>
+                    </div>
+                </div>
+
+                <div class="group w-full bg-[#121212]/60 border border-zinc-900/80 hover:border-zinc-800 rounded-2xl p-8 sm:p-10 flex flex-col sm:flex-row justify-between items-start gap-4 sm:gap-12 transition-all duration-300 shadow-xl fade-in-scaffold">
+                    <div class="font-black leading-none text-zinc-800 group-hover:text-red-600 transition-colors duration-300 min-w-[100px] text-[clamp(2.5rem,6vw,80px)]">03</div>
+                    <div class="flex flex-col flex-grow gap-3 mt-1">
+                        <h3 class="font-medium uppercase tracking-wide text-[clamp(1.25rem,2vw,1.75rem)] group-hover:text-red-500 transition-colors duration-300">UI Design & Aesthetic Systems</h3>
+                        <p class="font-light leading-relaxed max-w-3xl text-zinc-400 text-[clamp(0.9rem,1.5vw,1.15rem)]">Designing modern high-fidelity visual interfaces with atomic design component libraries, dark mode optimization tokens, and striking layout precision.</p>
+                    </div>
+                </div>
+
+                <div class="group w-full bg-[#121212]/60 border border-zinc-900/80 hover:border-zinc-800 rounded-2xl p-8 sm:p-10 flex flex-col sm:flex-row justify-between items-start gap-4 sm:gap-12 transition-all duration-300 shadow-xl fade-in-scaffold">
+                    <div class="font-black leading-none text-zinc-800 group-hover:text-red-600 transition-colors duration-300 min-w-[100px] text-[clamp(2.5rem,6vw,80px)]">04</div>
+                    <div class="flex flex-col flex-grow gap-3 mt-1">
+                        <h3 class="font-medium uppercase tracking-wide text-[clamp(1.25rem,2vw,1.75rem)] group-hover:text-red-500 transition-colors duration-300">Usability Auditing & Testing</h3>
+                        <p class="font-light leading-relaxed max-w-3xl text-zinc-400 text-[clamp(0.9rem,1.5vw,1.15rem)]">Evaluating design prototypes using rigorous user testing patterns, cognitive friction tracking, and clear structural audits to increase engagement benchmarks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORK EXPERIENCE -->
+    <section id="experience" class="bg-black py-24 px-6 relative z-30 max-w-6xl mx-auto w-full">
+        <div class="grid grid-cols-12 gap-8 md:gap-12">
+            <div class="col-span-12 md:col-span-4 md:sticky md:top-24 h-fit">
+                <h2 class="text-zinc-500 font-light uppercase tracking-[0.25em] text-xs sm:text-sm select-none flex items-center gap-2 mb-4">
+                    <span class="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse"></span>
+                    history track
+                </h2>
+                <h3 class="hero-heading-red font-black uppercase text-left tracking-tight text-[clamp(2.5rem,4.5vw,64px)] leading-none">
+                    Work<br>Experience
+                </h3>
+            </div>
+
+            <div class="col-span-12 md:col-span-8 flex flex-col border-l border-zinc-900/60 pl-4 sm:pl-8 ml-1 gap-10">
+                <div class="relative flex flex-col gap-1 fade-in-scaffold">
+                    <div class="absolute -left-[19px] sm:-left-[35px] top-1.5 w-1.5 h-1.5 rounded-full bg-red-600 ring-4 ring-black"></div>
+                    <div class="flex flex-wrap justify-between items-baseline gap-x-4 gap-y-1">
+                        <h4 class="font-bold text-base sm:text-lg text-white uppercase tracking-wide">Senior UI/UX Designer</h4>
+                        <span class="text-zinc-500 text-xs uppercase tracking-widest font-light font-mono">Jan 2025 — July 2025</span>
+                    </div>
+                    <div class="text-red-500 font-medium uppercase tracking-wider text-xs">
+                        <span>Wowinfotech</span>
+                    </div>
+                    <p class="text-zinc-400 font-light text-xs sm:text-sm tracking-normal leading-relaxed mt-1 max-w-2xl">
+                        Led design frameworks for complex web platforms and modern mobile applications, maintaining structural execution paths rooted strictly inside deep user-centered architecture parameters.
+                    </p>
+                </div>
+
+                <div class="relative flex flex-col gap-1 fade-in-scaffold">
+                    <div class="absolute -left-[19px] sm:-left-[35px] top-1.5 w-1.5 h-1.5 rounded-full bg-zinc-800 ring-4 ring-black"></div>
+                    <div class="flex flex-wrap justify-between items-baseline gap-x-4 gap-y-1">
+                        <h4 class="font-bold text-base sm:text-lg text-white uppercase tracking-wide">UI/UX Designer</h4>
+                        <span class="text-zinc-500 text-xs uppercase tracking-widest font-light font-mono">Sep 2024 — Jan 2025</span>
+                    </div>
+                    <div class="text-red-500 font-medium uppercase tracking-wider text-xs">
+                        <span>Minimal Studios</span>
+                    </div>
+                    <p class="text-zinc-400 font-light text-xs sm:text-sm tracking-normal leading-relaxed mt-1 max-w-2xl">
+                        Collaborated closely alongside cross-functional team stakeholders to translate layered feature constraints into fluid, intuitive high-fidelity interactive prototype systems.
+                    </p>
+                </div>
+
+                <div class="relative flex flex-col gap-1 fade-in-scaffold">
+                    <div class="absolute -left-[19px] sm:-left-[35px] top-1.5 w-1.5 h-1.5 rounded-full bg-zinc-800 ring-4 ring-black"></div>
+                    <div class="flex flex-wrap justify-between items-baseline gap-x-4 gap-y-1">
+                        <h4 class="font-bold text-base sm:text-lg text-white uppercase tracking-wide">UI/UX Design Intern</h4>
+                        <span class="text-zinc-500 text-xs uppercase tracking-widest font-light font-mono">Aug 2024 — Nov 2024</span>
+                    </div>
+                    <div class="text-red-500 font-medium uppercase tracking-wider text-xs">
+                        <span>Tunk AI</span>
+                    </div>
+                    <p class="text-zinc-400 font-light text-xs sm:text-sm tracking-normal leading-relaxed mt-1 max-w-2xl">
+                        Built highly responsive administrative dashboard interfaces and crafted clean architectural visual identity tokens optimized for advanced AI-driven product ecosystems.
+                    </p>
+                </div>
+
+                <div class="relative flex flex-col gap-1 fade-in-scaffold">
+                    <div class="absolute -left-[19px] sm:-left-[35px] top-1.5 w-1.5 h-1.5 rounded-full bg-zinc-800 ring-4 ring-black"></div>
+                    <div class="flex flex-wrap justify-between items-baseline gap-x-4 gap-y-1">
+                        <h4 class="font-bold text-base sm:text-lg text-white uppercase tracking-wide">UI/UX Designer</h4>
+                        <span class="text-zinc-500 text-xs uppercase tracking-widest font-light font-mono">May 2024 — Aug 2025</span>
+                    </div>
+                    <div class="text-red-500 font-medium uppercase tracking-wider text-xs">
+                        <span>Pratishthan Edu pvt ltd</span>
+                    </div>
+                    <p class="text-zinc-400 font-light text-xs sm:text-sm tracking-normal leading-relaxed mt-1 max-w-2xl">
+                        Completely re-imagined and redesigned core brand web portals, subsequently executing operational public deployment pipelines utilizing advanced custom Wix platform workflows.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="bg-white rounded-t-[40px] md:rounded-t-[60px] pt-32 pb-36 px-6 relative z-30 shadow-[0_-15px_30px_rgba(0,0,0,0.05)]">
+        <div class="max-w-6xl mx-auto flex flex-col gap-16">
+            <div class="fade-in-scaffold">
+                <h2 class="hero-heading-red font-black uppercase tracking-tight text-center leading-none text-[clamp(3rem,12vw,160px)]">
+                    Projects
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-12 gap-6 w-full">
+                
+                <!-- Project 01: BRUNETTTI -> page2.html -->
+                <a href="page2.html" class="col-span-12 project-grid-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-sm fade-in-scaffold group">
+                    <div class="w-full flex flex-wrap justify-between items-center gap-4 border-b border-zinc-200 pb-4">
+                        <div class="flex items-center gap-4">
+                            <span class="font-black text-2xl sm:text-3xl text-red-600">01</span>
+                            <div class="flex flex-col">
+                                <span class="text-[10px] uppercase tracking-widest text-zinc-500 font-medium">Core Branding & Digital Architecture</span>
+                                <h3 class="text-base sm:text-lg font-bold uppercase text-[#0C0C0C] tracking-wide group-hover:text-red-600 transition-colors duration-200">BRUNETTTI Visual Design</h3>
+                            </div>
+                        </div>
+                        <span class="rounded-full border border-zinc-300 text-zinc-600 font-medium uppercase tracking-widest px-5 py-2 text-xs transition-colors duration-200 group-hover:text-red-600 group-hover:border-red-600 inline-flex items-center gap-1.5">
+                            Live Case Study <i class="bi bi-arrow-up-right card-action-arrow transition-transform duration-200"></i>
+                        </span>
+                    </div>
+                    <div class="w-full grid grid-cols-12 gap-6 mt-6 items-center">
+                        <div class="col-span-12 md:col-span-5 flex flex-col gap-4">
+                            <p class="text-zinc-600 font-light text-xs sm:text-sm leading-relaxed">
+                                This is a london based high-end fashion brand project. I was responsible for the complete visual identity, digital architecture, and interactive interface design. The project involved creating a cohesive brand strategy, designing Figma systems, and implementing web engineering solutions to ensure a seamless user experience.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="text-[10px] bg-zinc-100 border border-zinc-200 text-zinc-600 px-3 py-1 rounded-full">Brand Strategy</span>
+                                <span class="text-[10px] bg-zinc-100 border border-zinc-200 text-zinc-600 px-3 py-1 rounded-full">Figma Systems</span>
+                                <span class="text-[10px] bg-zinc-100 border border-zinc-200 text-zinc-600 px-3 py-1 rounded-full">Web Engineering</span>
+                            </div>
+                        </div>
+                        <div class="col-span-12 md:col-span-7 zoom-container bg-zinc-100 rounded-2xl border border-zinc-200/60 h-48 md:h-64 flex items-center justify-center text-zinc-400 font-mono text-[10px] uppercase overflow-hidden group-hover:text-red-600 transition-colors duration-200">
+                            [ view case study ]
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 02: FYJC Portal System -> page3.html -->
+                <a href="page3.html" class="col-span-12 md:col-span-7 project-grid-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-sm fade-in-scaffold group">
+                    <div class="flex flex-col gap-4 w-full">
+                        <div class="w-full flex flex-wrap justify-between items-center gap-4 border-b border-zinc-200 pb-4">
+                            <div class="flex items-center gap-4">
+                                <span class="font-black text-2xl text-red-600">02</span>
+                                <div class="flex flex-col">
+                                    <span class="text-[10px] uppercase tracking-widest text-zinc-500 font-medium">Public Service Design & Portals</span>
+                                    <h3 class="text-sm sm:text-base font-bold uppercase text-[#0C0C0C] tracking-wide group-hover:text-red-600 transition-colors duration-200">Maharashtra FYJC Online Portal</h3>
+                                </div>
+                            </div>
+                            <span class="rounded-full border border-zinc-300 text-zinc-600 font-medium uppercase tracking-widest px-5 py-2 text-xs transition-colors duration-200 group-hover:text-red-600 group-hover:border-red-600 inline-flex items-center gap-1.5">
+                                View Case Study <i class="bi bi-arrow-up-right card-action-arrow transition-transform duration-200"></i>
+                            </span>
+                        </div>
+                        <p class="text-zinc-600 font-light text-xs sm:text-sm leading-relaxed">
+                            Comprehensive research study and UX proposal restructuring complex data onboarding paths for thousands of students. Replaced technical friction arrays with clean, user-centric storyboard streams.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 mt-1">
+                            <span class="text-[10px] bg-zinc-100 border border-zinc-200 text-zinc-600 px-3 py-1 rounded-full">HCI Optimization</span>
+                            <span class="text-[10px] bg-zinc-100 border border-zinc-200 text-zinc-600 px-3 py-1 rounded-full">User Flows</span>
+                        </div>
+                    </div>
+                    <div class="zoom-container bg-zinc-100 rounded-2xl border border-zinc-200/60 h-48 mt-6 flex items-center justify-center text-zinc-400 font-mono text-[10px] uppercase overflow-hidden group-hover:text-red-600 transition-colors duration-200 w-full">
+                        [ view case study ]
+                    </div>
+                </a>
+
+                <!-- Project 03: Website Launch -> page4.html -->
+                <a href="page4.html" class="col-span-12 md:col-span-5 project-grid-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-sm fade-in-scaffold group">
+                    <div class="flex flex-col gap-4 w-full">
+                        <div class="w-full flex flex-wrap justify-between items-center gap-4 border-b border-zinc-200 pb-4">
+                            <div class="flex items-center gap-4">
+                                <span class="font-black text-2xl text-red-600">03</span>
+                                <div class="flex flex-col">
+                                    <span class="text-[10px] uppercase tracking-widest text-zinc-500 font-medium">Few of freelancing work</span>
+                                    <h3 class="text-sm sm:text-base font-bold uppercase text-[#0C0C0C] tracking-wide group-hover:text-red-600 transition-colors duration-200">Website Launch</h3>
+                                </div>
+                            </div>
+                            <span class="rounded-full border border-zinc-300 text-zinc-600 font-medium uppercase tracking-widest px-5 py-2 text-xs transition-colors duration-200 group-hover:text-red-600 group-hover:border-red-600 inline-flex items-center gap-1.5">
+                                View Live Website <i class="bi bi-arrow-up-right card-action-arrow transition-transform duration-200"></i>
+                            </span>
+                        </div>
+                        <p class="text-zinc-600 font-light text-xs sm:text-sm leading-relaxed">
+                            Designed and developed a fully responsive website for a client, ensuring optimal performance across all devices. Implemented interactive elements and animations to enhance user engagement and overall experience.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 mt-1">
+                            <span class="text-[10px] bg-zinc-100 border border-zinc-200 text-zinc-600 px-3 py-1 rounded-full">Interactive Code</span>
+                        </div>
+                    </div>
+                    <div class="zoom-container bg-zinc-100 rounded-2xl border border-zinc-200/60 h-48 mt-6 flex items-center justify-center text-zinc-400 font-mono text-[10px] uppercase overflow-hidden group-hover:text-red-600 transition-colors duration-200 w-full">
+                        [ view live website ]
+                    </div>
+                </a>
+
+                <!-- Project 04: Hoomies app -> page5.html -->
+                <a href="page5.html" class="col-span-12 md:col-span-5 project-grid-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-sm fade-in-scaffold group">
+                    <div class="flex flex-col gap-4 w-full">
+                        <div class="w-full flex flex-wrap justify-between items-center gap-4 border-b border-zinc-200 pb-4">
+                            <div class="flex items-center gap-4">
+                                <span class="font-black text-2xl text-red-600">04</span>
+                                <div class="flex flex-col">
+                                    <span class="text-[10px] uppercase tracking-widest text-zinc-500 font-medium">App Design</span>
+                                    <h3 class="text-sm sm:text-base font-bold uppercase text-[#0C0C0C] tracking-wide group-hover:text-red-600 transition-colors duration-200">Hoomies app</h3>
+                                </div>
+                            </div>
+                            <span class="rounded-full border border-zinc-300 text-zinc-600 font-medium uppercase tracking-widest px-5 py-2 text-xs transition-colors duration-200 group-hover:text-red-600 group-hover:border-red-600 inline-flex items-center gap-1.5">
+                                View Case Study <i class="bi bi-arrow-up-right card-action-arrow transition-transform duration-200"></i>
+                            </span>
+                        </div>
+                        <p class="text-zinc-600 font-light text-xs sm:text-sm leading-relaxed">
+                            Designed a user-friendly mobile application for a collage assignment, focusing on intuitive navigation and visually appealing interfaces. Conducted user research/ testing to refine the app's functionality and enhance the overall user experience.
+                        </p>
+                    </div>
+                    <div class="zoom-container bg-zinc-100 rounded-2xl border border-zinc-200/60 h-48 mt-6 flex items-center justify-center text-zinc-400 font-mono text-[10px] uppercase overflow-hidden group-hover:text-red-600 transition-colors duration-200 w-full">
+                        [ view case study ]
+                    </div>
+                </a>
+
+                <!-- Project 05: Patam -> page6.html -->
+                <a href="page6.html" class="col-span-12 md:col-span-7 project-grid-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-sm fade-in-scaffold group">
+                    <div class="flex flex-col gap-4 w-full">
+                        <div class="w-full flex flex-wrap justify-between items-center gap-4 border-b border-zinc-200 pb-4">
+                            <div class="flex items-center gap-4">
+                                <span class="font-black text-2xl text-red-600">05</span>
+                                <div class="flex flex-col">
+                                    <span class="text-[10px] uppercase tracking-widest text-zinc-500 font-medium">Visual Design</span>
+                                    <h3 class="text-sm sm:text-base font-bold uppercase text-[#0C0C0C] tracking-wide group-hover:text-red-600 transition-colors duration-200">Patam</h3>
+                                </div>
+                            </div>
+                            <span class="rounded-full border border-zinc-300 text-zinc-600 font-medium uppercase tracking-widest px-5 py-2 text-xs transition-colors duration-200 group-hover:text-red-600 group-hover:border-red-600 inline-flex items-center gap-1.5">
+                                View Case Study <i class="bi bi-arrow-up-right card-action-arrow transition-transform duration-200"></i>
+                            </span>
+                        </div>
+                        <p class="text-zinc-600 font-light text-xs sm:text-sm leading-relaxed">
+                            This is a complete visual based project added for My college, creating a visual identity of a brand, including logo design, color palette, typography, and visual elements. The project aimed to establish a strong brand presence and communicate the brand's values effectively through visual storytelling.
+                        </p>
+                    </div>
+                    <div class="zoom-container bg-zinc-100 rounded-2xl border border-zinc-200/60 h-48 mt-6 flex items-center justify-center text-zinc-400 font-mono text-[10px] uppercase overflow-hidden group-hover:text-red-600 transition-colors duration-200 w-full">
+                        [ view case study ]
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         MINIMALIST RECRUITER CONTACT TRANSITION BAR // Next Step Dock
+    ══════════════════════════════════════════════════════════════ -->
+    <footer class="relative z-30 bg-[#000000] -mt-10 rounded-t-[40px] md:rounded-t-[60px] border-t border-zinc-900 pt-16 pb-12 px-6 sm:px-12 text-white">
+        <div class="max-w-6xl mx-auto flex flex-col gap-10">
+            
+            <!-- Sleek Interactive Transition Dock -->
+            <div class="w-full bg-[#080808] border border-zinc-800/80 hover:border-zinc-700 rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 shadow-2xl transition-all duration-300 portal-bar-glow group">
+                
+                <div class="flex flex-col gap-2">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+                        <span class="font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-400 font-bold">Node 07 // Recruiter Fast Track</span>
+                    </div>
+                    <h3 class="font-serif-italic text-2xl sm:text-3xl text-white font-normal">
+                        Ready to discuss a role, freelance scope, or design systems?
+                    </h3>
+                </div>
+
+                <!-- Redirect Anchor Button to page7contact.html -->
+                <a href="page7contact.html" class="inline-flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white font-mono text-xs uppercase tracking-widest font-semibold px-8 py-4 rounded-full shadow-[0_0_25px_rgba(255,0,0,0.3)] hover:shadow-[0_0_40px_rgba(255,0,0,0.55)] transition-all duration-300 transform hover:-translate-y-0.5 flex-shrink-0">
+                    <span>Initialize Contact</span>
+                    <i class="bi bi-arrow-right text-sm group-hover:translate-x-1 transition-transform duration-200"></i>
+                </a>
+
+            </div>
+
+            <!-- Direct Channels Bar -->
+            <div class="w-full flex flex-wrap justify-between items-center gap-6 pt-6 border-t border-zinc-900/80 font-mono text-xs text-zinc-500">
+                <div class="flex flex-wrap items-center gap-6 sm:gap-8">
+                    <a href="mailto:shirishavijaykanthpole@gmail.com" class="hover:text-red-500 transition-colors duration-200 flex items-center gap-2">
+                        <i class="bi bi-envelope text-zinc-600"></i> shirishavijaykanthpole@gmail.com
+                    </a>
+                    <a href="tel:+917517951864" class="hover:text-red-500 transition-colors duration-200 flex items-center gap-2">
+                        <i class="bi bi-telephone text-zinc-600"></i> +91 7517951864
+                    </a>
+                    <a href="https://linkedin.com/in/shirishapole" target="_blank" rel="noopener noreferrer" class="hover:text-red-500 transition-colors duration-200 flex items-center gap-2">
+                        <i class="bi bi-linkedin text-zinc-600"></i> LinkedIn
+                    </a>
+                </div>
+
+                <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="hover:text-white uppercase flex items-center gap-2 transition-colors duration-200 text-[11px]">
+                    Back to Top <i class="bi bi-arrow-up text-red-500"></i>
+                </button>
+            </div>
+
+            <!-- Tiny Copyright Bar -->
+            <div class="w-full flex justify-between items-center text-[10px] font-mono text-zinc-700 tracking-wider pt-2">
+                <span>© 2026 Shirisha Pole — UI/UX Systems Architect</span>
+                <span>Pune, MH, IN</span>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // 1. MOUSE-FOLLOWING MAGNETIC PORTRAIT HOVER ENGINE
+            const magnetWrapper = document.getElementById('magneticWrapper');
+            const paddingThreshold = 150;
+            const strengthFactor = 3;
+
+            document.addEventListener('mousemove', (e) => {
+                if(!magnetWrapper) return;
+                const rect = magnetWrapper.getBoundingClientRect();
+                const centerPointX = rect.left + rect.width / 2;
+                const centerPointY = rect.top + rect.height / 2;
+                
+                const deltaX = e.clientX - centerPointX;
+                const deltaY = e.clientY - centerPointY;
+                const currentDistance = Math.hypot(deltaX, deltaY);
+
+                if (currentDistance < paddingThreshold) {
+                    magnetWrapper.style.transition = "transform 0.3s ease-out";
+                    magnetWrapper.style.transform = `translate3d(${deltaX / strengthFactor}px, ${deltaY / strengthFactor}px, 0) translate(-50%, -50%)`;
+                } else {
+                    magnetWrapper.style.transition = "transform 0.6s ease-in-out";
+                    magnetWrapper.style.transform = "translate3d(0, 0, 0) translate(-50%, 0)";
+                }
+            });
+
+            // 2. CHARACTER-BY-CHARACTER BIO WRITER
+            const textToReveal = "With more than five years of experience in design, i focus on branding, web design, and user experience, i truly enjoy working with businesses that aim to stand out and present their best image. Let's build something incredible together!";
+            
+            const paragraphContainer = document.getElementById('kineticParagraph');
+            let totalCharacterNodes = [];
+            
+            if(paragraphContainer) {
+                textToReveal.split(' ').forEach(word => {
+                    const wordSpan = document.createElement('span');
+                    wordSpan.className = "mx-1 inline-block whitespace-nowrap";
+                    
+                    word.split('').forEach(char => {
+                        const charSpan = document.createElement('span');
+                        charSpan.className = "reveal-char-node";
+                        charSpan.innerText = char;
+                        wordSpan.appendChild(charSpan);
+                        totalCharacterNodes.push(charSpan);
+                    });
+                    paragraphContainer.appendChild(wordSpan);
+                });
+            }
+
+            // 3. ELEMENT ENTRY TRANSITIONS SEQUENCE
+            const observedNodes = document.querySelectorAll('.fade-in-scaffold');
+            const generalOptions = { threshold: 0.05, rootMargin: "0px 0px -50px 0px" };
+
+            const viewObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-revealed');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, generalOptions);
+
+            observedNodes.forEach(node => viewObserver.observe(node));
+
+            // 4. SCROLL PROGRESS CONTROLLER
+            window.addEventListener('scroll', () => {
+                const viewHeight = window.innerHeight;
+
+                if(paragraphContainer && totalCharacterNodes.length > 0) {
+                    const rect = paragraphContainer.getBoundingClientRect();
+                    const progressTriggerStart = viewHeight * 0.8;
+                    const progressTriggerEnd = viewHeight * 0.2;
+                    
+                    let progressPercentage = (progressTriggerStart - rect.top) / (progressTriggerStart - progressTriggerEnd);
+                    progressPercentage = Math.max(0, Math.min(1, progressPercentage));
+
+                    const nodesToGlow = Math.floor(progressPercentage * totalCharacterNodes.length);
+                    totalCharacterNodes.forEach((node, index) => {
+                        if(index <= nodesToGlow) {
+                            node.classList.add('active-glow');
+                        } else {
+                            node.classList.remove('active-glow');
+                        }
+                    });
+                }
+            }, { passive: true });
+
+            // 5. MOVING DOTS SYSTEM
+            const canvas = document.getElementById('movingDotsCanvas');
+            const ctx = canvas.getContext('2d');
+            let dots = [];
+            const numDots = 60; 
+            
+            let mouse = { x: -1000, y: -1000, active: false };
+            const interactionRadius = 180; 
+
+            function resizeCanvas() {
+                canvas.width = canvas.offsetWidth;
+                canvas.height = canvas.offsetHeight;
+            }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            for (let i = 0; i < numDots; i++) {
+                dots.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    baseRadius: Math.random() * 2.5 + 2, 
+                    radius: 0,
+                    vx: (Math.random() - 0.5) * 0.5, 
+                    vy: (Math.random() - 0.5) * 0.5, 
+                    ox: 0,
+                    oy: 0
+                });
+                dots[i].radius = dots[i].baseRadius;
+                dots[i].ox = dots[i].vx;
+                dots[i].oy = dots[i].vy;
+            }
+
+            const aboutSection = document.getElementById('about');
+            document.addEventListener('mousemove', (e) => {
+                const rect = aboutSection.getBoundingClientRect();
+                if(e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom) {
+                    mouse.x = e.clientX - rect.left;
+                    mouse.y = e.clientY - rect.top;
+                    mouse.active = true;
+                } else {
+                    mouse.active = false;
+                }
+            });
+
+            document.addEventListener('mouseleave', () => {
+                mouse.active = false;
+            });
+
+            function animateDots() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                dots.forEach(dot => {
+                    if (mouse.active) {
+                        const dx = mouse.x - dot.x;
+                        const dy = mouse.y - dot.y;
+                        const distance = Math.hypot(dx, dy);
+
+                        if (distance < interactionRadius) {
+                            const force = (interactionRadius - distance) / interactionRadius;
+                            const angle = Math.atan2(dy, dx);
+                            
+                            dot.vx += Math.cos(angle) * force * 0.15;
+                            dot.vy += Math.sin(angle) * force * 0.15;
+                            dot.radius = Math.min(dot.baseRadius * 1.5, dot.radius + 0.1);
+                        } else {
+                            dot.vx += (dot.ox - dot.vx) * 0.05;
+                            dot.vy += (dot.oy - dot.vy) * 0.05;
+                            dot.radius = Math.max(dot.baseRadius, dot.radius - 0.1);
+                        }
+                    } else {
+                        dot.vx += (dot.ox - dot.vx) * 0.05;
+                        dot.vy += (dot.oy - dot.vy) * 0.05;
+                        dot.radius = Math.max(dot.baseRadius, dot.radius - 0.1);
+                    }
+
+                    const speed = Math.hypot(dot.vx, dot.vy);
+                    const maxSpeed = 3;
+                    if (speed > maxSpeed) {
+                        dot.vx = (dot.vx / speed) * maxSpeed;
+                        dot.vy = (dot.vy / speed) * maxSpeed;
+                    }
+
+                    dot.x += dot.vx;
+                    dot.y += dot.vy;
+
+                    if (dot.x < 0) dot.x = canvas.width;
+                    if (dot.x > canvas.width) dot.x = 0;
+                    if (dot.y < 0) dot.y = canvas.height;
+                    if (dot.y > canvas.height) dot.y = 0;
+
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+                    ctx.beginPath();
+                    ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+
+                requestAnimationFrame(animateDots);
+            }
+            animateDots();
+        });
+    </script>
+</body>
+</html>

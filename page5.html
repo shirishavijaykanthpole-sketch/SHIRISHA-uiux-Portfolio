@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study 04 // Home's App — Portfolio Archive</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #FFFFFF !important;
+            color: #0C0C0C;
+            font-family: 'Kanit', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .presentation-canvas {
+            cursor: zoom-in;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        
+        .presentation-canvas:hover {
+            transform: scale(1.01);
+        }
+
+        .lightbox-active {
+            overflow: hidden;
+        }
+
+        /* Ambient custom scrollbar for presentation viewer */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #FFFFFF;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #E4E4E7;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #EF4444;
+        }
+    </style>
+</head>
+<body class="bg-white text-zinc-900">
+
+    <nav class="w-full fixed top-0 left-0 z-50 bg-white/80 backdrop-blur-md border-b border-zinc-100 py-5 px-6 sm:px-12">
+        <div class="max-w-7xl mx-auto flex justify-between items-center w-full">
+            <a href="indexx.html" class="flex items-center gap-2 text-zinc-500 hover:text-black transition-colors duration-200 uppercase font-bold text-xs tracking-widest">
+                <i class="bi bi-arrow-left text-sm"></i> Back to Archive
+            </a>
+            <div class="flex items-center gap-6 font-mono text-[10px] uppercase text-zinc-400 tracking-wider">
+                <span>Project Category: Product Design Suite</span>
+                <span class="text-zinc-200">•</span>
+                <span>Page 05</span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-36 pb-16 px-6 sm:px-12 max-w-7xl mx-auto w-full border-b border-zinc-100">
+        <div class="grid grid-cols-12 gap-6 items-end w-full">
+            <div class="col-span-12 md:col-span-8 flex flex-col gap-2">
+                <span class="text-xs uppercase font-mono tracking-widest text-red-600 font-bold">Page 05 // Case Study 04</span>
+                <h1 class="font-serif italic text-5xl sm:text-7xl md:text-8xl text-[#0C0C0C] font-normal tracking-tight leading-none mt-1">
+                    Home's App
+                </h1>
+            </div>
+            <div class="col-span-12 md:col-span-4 pb-2">
+                <p class="text-zinc-500 font-light text-sm sm:text-base leading-relaxed tracking-normal">
+                    Re-architecting urban apartment discovery and verified roommate requests for bachelors and students navigating dense housing ecosystems across India.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto w-full px-6 py-16 space-y-24">
+        
+        <section class="flex flex-col gap-4">
+            <span class="font-mono text-xs font-bold text-red-600 uppercase tracking-widest">/ 01. The Challenge Overview</span>
+            <h2 class="font-serif italic text-3xl sm:text-4xl text-[#0C0C0C]">Addressing the Urban Housing Bottleneck</h2>
+            <p class="text-zinc-600 font-light text-base sm:text-lg leading-relaxed">
+                Finding affordable, reliable, and bias-free living spaces remains a critical systemic failure all over India, particularly in thriving academic and technological hubs like Pune. Bachelors, remote workers, and university students routinely encounter extreme real estate profiling, opaque price inflation, and structural safety anxieties. 
+            </p>
+            <p class="text-zinc-600 font-light text-base sm:text-lg leading-relaxed">
+                The current rental ecosystem forces individuals to depend on disjointed online group feeds or arbitrary local brokers who exploit the market via unregulated fees. The core design challenge centered on building an end-to-end framework capable of rendering verified, peer-reviewed properties while completely eliminating unbacked rental friction layers.
+            </p>
+        </section>
+
+        <section class="flex flex-col gap-4 border-t border-zinc-100 pt-12">
+            <span class="font-mono text-xs font-bold text-red-600 uppercase tracking-widest">/ 02. System Specifications</span>
+            <div class="bg-zinc-50 border border-zinc-200 rounded-2xl p-6 sm:p-8 font-mono text-[12px] sm:text-sm text-zinc-500 space-y-2">
+                <div><span class="text-red-600 font-semibold">const</span> solutionNode = <span class="text-zinc-900">"Home's App Ecosystem"</span>;</div>
+                <div>this.<span class="text-zinc-900">marketReach</span> = <span class="text-zinc-700">"Pan-India Urban Hubs"</span>;</div>
+                <div>this.<span class="text-zinc-900">primaryCohort</span> = <span class="text-zinc-700">"Bachelors & Students"</span>;</div>
+                <div>this.<span class="text-zinc-900">monetization</span> = <span class="text-zinc-700">"Zero-Brokerage Baseline Matrix"</span>;</div>
+                <div>this.<span class="text-zinc-900">securityLayer</span> = <span class="text-zinc-700">"Verified Verification Checks"</span>;</div>
+            </div>
+        </section>
+
+        <section class="flex flex-col gap-4 border-t border-zinc-100 pt-12">
+            <span class="font-mono text-xs font-bold text-red-600 uppercase tracking-widest">/ 03. Roommate Pairing & Safety Metrics</span>
+            <h2 class="font-serif italic text-3xl sm:text-4xl text-[#0C0C0C]">Peer Discovery & Structural Verification</h2>
+            <p class="text-zinc-600 font-light text-base sm:text-lg leading-relaxed">
+                A major feature engineered for Home's App is the interactive roommate discovery node. Users looking to split space allocations in a precise geographic sector can quickly drop an active request detailing localized criteria.
+            </p>
+            <p class="text-zinc-600 font-light text-base sm:text-lg leading-relaxed">
+                Interested parties interact through an automated, structural safety checklist. This built-in workflow guides both users through thorough background verification metrics, lifestyle parameters, security documentation, and legal guidelines to maintain absolute trust before contract generation takes place.
+            </p>
+        </section>
+
+        <section class="flex flex-col gap-4 border-t border-zinc-100 pt-12">
+            <span class="font-mono text-xs font-bold text-red-600 uppercase tracking-widest">/ 04. Possibilities of Market Success</span>
+            <h2 class="font-serif italic text-3xl sm:text-4xl text-[#0C0C0C]">Disrupting Legacy Real Estate Networks</h2>
+            <p class="text-zinc-600 font-light text-base sm:text-lg leading-relaxed">
+                The platform's growth potential lies in its disruption of structural financial drag. By maintaining a strict <strong>no brokerage policy</strong> across primary listings—and limiting minimal brokerage variables exclusively to highly dense, specialized target zones—Home's App instantly captures user trust.
+            </p>
+            <p class="text-zinc-600 font-light text-base sm:text-lg leading-relaxed">
+                By providing verified peer authentication systems, safe algorithmic filtering, and transparent lease configurations, the design addresses the exact societal bottlenecks that current industry legacy platforms systematically fail to solve.
+            </p>
+        </section>
+
+        <section class="flex flex-col gap-6 border-t border-zinc-100 pt-12">
+            <div class="flex justify-between items-center flex-wrap gap-4">
+                <div class="flex flex-col gap-1">
+                    <span class="font-mono text-xs font-bold text-red-600 uppercase tracking-widest">/ 05. Presentation Sheets</span>
+                    <h2 class="font-serif italic text-3xl sm:text-4xl text-[#0C0C0C]">Interactive Production Proofs</h2>
+                </div>
+                <span class="font-mono text-[11px] text-zinc-400 uppercase tracking-wider hidden sm:inline">Select canvas to expand high-fidelity design sheets</span>
+            </div>
+
+            <div 
+                onclick="openPresentationLightbox('hoomies.pdf')"
+                class="w-full border border-zinc-200 rounded-3xl p-6 bg-zinc-50/50 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 group cursor-pointer flex flex-col items-center justify-center min-h-[40vh] relative"
+            >
+                <div class="absolute inset-0 bg-zinc-900/0 group-hover:bg-zinc-900/5 transition-colors duration-300 z-10 flex items-center justify-center">
+                    <div class="bg-white/90 backdrop-blur-md border border-zinc-200 text-zinc-900 font-mono text-xs px-5 py-3 rounded-full uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-md font-medium flex items-center gap-2 translate-y-2 group-hover:translate-y-0">
+                        Open Presentation Viewport <i class="bi bi-arrows-fullscreen text-[10px]"></i>
+                    </div>
+                </div>
+                
+                <div class="text-center space-y-4 max-w-md p-6 relative z-0">
+                    <div class="w-16 h-16 bg-red-50 text-red-500 rounded-2xl flex items-center justify-center mx-auto shadow-sm border border-red-100">
+                        <i class="bi bi-file-earmark-pdf text-3xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-serif italic text-2xl text-zinc-900">Architecture Case Study Deck</h3>
+                        <p class="text-xs font-mono uppercase text-zinc-400 tracking-wider mt-1">hoomies.pdf // High-Fidelity Blueprint</p>
+                    </div>
+                    <p class="text-sm text-zinc-500 font-light leading-relaxed">
+                        Click anywhere to open the vector workspace deck directly in a fullscreen responsive modal view.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="presentationLightbox" class="fixed inset-0 bg-white/98 backdrop-blur-xl z-50 hidden opacity-0 transition-opacity duration-300 flex flex-col items-center justify-center p-0">
+        <div class="w-full p-6 flex justify-between items-center z-50 border-b border-zinc-100 bg-white/80 backdrop-blur-md fixed top-0 left-0">
+            <span class="font-mono text-xs text-zinc-500 uppercase tracking-widest">Home's App Architecture // Fullscreen Layout Overview</span>
+            <button onclick="closePresentationLightbox()" class="text-zinc-600 hover:text-black transition-colors duration-200 text-xs uppercase font-mono tracking-widest flex items-center gap-2 bg-zinc-50 border border-zinc-200 px-4 py-2 rounded-full font-bold shadow-sm">
+                Close Viewport <i class="bi bi-x-lg text-xs"></i>
+            </button>
+        </div>
+        
+        <div class="w-full h-full pt-20 pb-4 px-4 bg-zinc-50">
+            <iframe id="lightboxTargetSource" src="" title="Case Study Deck Viewport" class="w-full h-full rounded-2xl border border-zinc-200 shadow-sm bg-white"></iframe>
+        </div>
+    </div>
+
+    <footer class="w-full bg-[#0C0C0C] text-white py-16 px-6 sm:px-12 border-t border-zinc-900">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-8 w-full">
+            <div class="flex flex-col gap-1 text-center sm:text-left">
+                <h4 class="text-base font-bold uppercase tracking-wide">Next Design Showcase</h4>
+                <p class="text-zinc-500 font-light text-sm">Advance to the upcoming portfolio architecture track</p>
+            </div>
+            <a href="indexx.html" class="group border border-zinc-800 bg-zinc-900/50 hover:border-zinc-600 hover:text-red-500 rounded-full px-8 py-3 uppercase tracking-wider font-medium text-xs text-zinc-300 transition-all duration-300 flex items-center gap-2">
+                Go to Next Project <i class="bi bi-arrow-right group-hover:translate-x-1 transition-transform duration-200"></i>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        function openPresentationLightbox(pdfSrc) {
+            const lightbox = document.getElementById('presentationLightbox');
+            const target = document.getElementById('lightboxTargetSource');
+            
+            // Assign the PDF location to the iframe source seamlessly
+            target.src = pdfSrc;
+            
+            lightbox.classList.remove('hidden');
+            document.body.classList.add('lightbox-active');
+            
+            setTimeout(() => {
+                lightbox.classList.remove('opacity-0');
+            }, 20);
+        }
+
+        function closePresentationLightbox() {
+            const lightbox = document.getElementById('presentationLightbox');
+            const target = document.getElementById('lightboxTargetSource');
+            
+            lightbox.classList.add('opacity-0');
+            document.body.classList.remove('lightbox-active');
+            
+            setTimeout(() => {
+                lightbox.classList.add('hidden');
+                // Erase source parameter dynamically to stop background engine processes
+                target.src = "";
+            }, 300);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closePresentationLightbox();
+            }
+        });
+    </script>
+</body>
+</html>

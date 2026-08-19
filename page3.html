@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maharashtra FYJC Portal — Service Design Case Study</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #FFFFFF !important;
+            color: #0C0C0C;
+            font-family: 'Kanit', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .hero-heading-red {
+            background: linear-gradient(180deg, #FF1E1E 0%, #850000 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .image-render-crisp {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+        }
+
+        /* Hardware-accelerated smooth fade elements */
+        .case-study-node {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .case-study-node.is-revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- 01. HEADER TITLE & SPECS -->
+    <header class="pt-16 sm:pt-20 pb-20 px-6 sm:px-12 max-w-7xl mx-auto w-full border-b border-zinc-900/10">
+        <div class="grid grid-cols-12 gap-6 items-start w-full">
+            <div class="col-span-12 lg:col-span-7 flex flex-col gap-4">
+                <span class="text-xs uppercase font-mono tracking-widest text-red-600 font-bold block">Project 02 // Core Case Study</span>
+                <h1 class="font-serif italic text-6xl sm:text-8xl lg:text-9xl text-[#0C0C0C] font-normal tracking-tighter leading-none">
+                    FYJC Portal System
+                </h1>
+                <div class="flex flex-wrap gap-3 mt-4">
+                    <span class="border border-zinc-200 rounded-full px-4 py-1 text-xs uppercase tracking-wider text-zinc-500 font-mono">Public Infrastructure</span>
+                    <span class="border border-zinc-200 rounded-full px-4 py-1 text-xs uppercase tracking-wider text-zinc-500 font-mono">HCI Research</span>
+                    <span class="border border-zinc-200 rounded-full px-4 py-1 text-xs uppercase tracking-wider text-zinc-500 font-mono">Design Systems</span>
+                </div>
+            </div>
+            <div class="col-span-12 lg:col-span-5 lg:pt-14 border-t lg:border-t-0 lg:border-l border-zinc-100 pt-6 lg:pl-8">
+                <p class="text-zinc-500 font-light text-base sm:text-lg leading-relaxed tracking-normal max-w-xl">
+                    Re-engineering the First Year Junior College (FYJC) online admission system into a high-legibility, friction-free digital public experience for lakhs of students across Maharashtra.
+                </p>
+                <button onclick="toggleDesignSystem()" class="mt-6 group flex items-center gap-3 border border-red-600 bg-red-600 text-white hover:bg-black hover:border-black rounded-full px-6 py-2.5 uppercase tracking-widest font-medium text-xs transition-all duration-300">
+                    Open Complete PDF Document <i class="bi bi-file-earmark-pdf text-sm"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 02. MAIN CASE STUDY CONTENT -->
+    <main class="max-w-7xl mx-auto w-full px-6 sm:px-12 py-16 flex flex-col gap-24">
+        
+        <section class="grid grid-cols-12 gap-8 items-start border-b border-zinc-100 pb-16 case-study-node is-revealed">
+            <div class="col-span-12 md:col-span-4 sticky top-24">
+                <div class="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-zinc-400 mb-2">
+                    <span class="text-red-600 font-bold">01 //</span> Context
+                </div>
+                <h2 class="font-serif italic text-4xl sm:text-5xl text-[#0C0C0C] tracking-tight leading-none">
+                    The Problem
+                </h2>
+            </div>
+            <div class="col-span-12 md:col-span-8 text-zinc-600 font-light text-sm sm:text-base leading-relaxed space-y-6 max-w-2xl">
+                <p>
+                    Legacy civic administrative infrastructure treats portal interfaces as simple raw database outputs. Dense, unformatted form fields, complex statutory quota verification paths, and obscured status markers consistently lead to high user rejection percentages.
+                </p>
+                <p>
+                    Lakhs of young applicants and parents are left vulnerable to critical processing mistakes during stressful high-stakes secondary admission selection intervals due to absolute design logic failures.
+                </p>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-12 gap-8 items-start border-b border-zinc-100 pb-16 case-study-node">
+            <div class="col-span-12 md:col-span-4 sticky top-24">
+                <div class="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-zinc-400 mb-2">
+                    <span class="text-red-600 font-bold">02 //</span> Constraints
+                </div>
+                <h2 class="font-serif italic text-4xl sm:text-5xl text-[#0C0C0C] tracking-tight leading-none">
+                    The Challenges
+                </h2>
+            </div>
+            <div class="col-span-12 md:col-span-8 text-zinc-600 font-light text-sm sm:text-base leading-relaxed space-y-6 max-w-2xl">
+                <p>
+                    The overarching engineering challenge lies in operational scalability. The interface parameters had to scale faultlessly to run under low-bandwidth networks, processing high transactions smoothly on compromised viewports while observing rigorous governmental legal confirmation tracks.
+                </p>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-12 gap-8 items-start border-b border-zinc-100 pb-16 case-study-node">
+            <div class="col-span-12 md:col-span-4 sticky top-24">
+                <div class="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-zinc-400 mb-2">
+                    <span class="text-red-600 font-bold">03 //</span> Evolution
+                </div>
+                <h2 class="font-serif italic text-4xl sm:text-5xl text-[#0C0C0C] tracking-tight leading-none">
+                    The Next Better Step
+                </h2>
+            </div>
+            <div class="col-span-12 md:col-span-8 text-zinc-600 font-light text-sm sm:text-base leading-relaxed space-y-6 max-w-2xl">
+                <p>
+                    This ecosystem defines the upcoming paradigm for Maharashtra's digitized public education infrastructure. By deploying absolute progressive disclosure methodologies, separating structural steps, and implementing adaptive typographic token systems, we establish immediate clarity for citizens.
+                </p>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-12 gap-8 items-start pb-16 case-study-node">
+            <div class="col-span-12 md:col-span-4 sticky top-24">
+                <div class="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-zinc-400 mb-2">
+                    <span class="text-red-600 font-bold">04 //</span> Framework
+                </div>
+                <h2 class="font-serif italic text-4xl sm:text-5xl text-[#0C0C0C] tracking-tight leading-none">
+                    Process &amp; Success
+                </h2>
+            </div>
+            <div class="col-span-12 md:col-span-8 flex flex-col gap-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="border border-zinc-100 bg-zinc-50 rounded-2xl p-6 flex flex-col justify-between gap-4">
+                        <span class="font-mono text-xs text-red-600 font-bold uppercase tracking-widest">Phase A // HCI Auditing</span>
+                        <p class="text-zinc-600 font-light text-xs sm:text-sm leading-relaxed">
+                            Extracted core procedural steps through continuous interaction modeling, identifying exactly where system drop-offs took place due to phrasing noise.
+                        </p>
+                    </div>
+                    <div class="border border-zinc-100 bg-zinc-50 rounded-2xl p-6 flex flex-col justify-between gap-4">
+                        <span class="font-mono text-xs text-red-600 font-bold uppercase tracking-widest">Phase B // Variable Tokens</span>
+                        <p class="text-zinc-600 font-light text-xs sm:text-sm leading-relaxed">
+                            Formulated layout guidelines using strict typographic baseline logic ensuring immediate cross-device application processing security.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-zinc-950 text-white rounded-2xl p-6 sm:p-8 mt-4">
+                    <span class="text-xs font-mono tracking-widest text-zinc-500 uppercase block mb-1">Core Systemic Inquiry</span>
+                    <blockquote class="font-serif italic text-lg sm:text-xl text-zinc-200 border-l border-red-500 pl-4 my-3">
+                        "How can mathematical data parameters be organized clearly on mobile viewports so users command absolute focus without administrative fatigue?"
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 03. FULL PDF PRESENTATION CTA -->
+    <section class="py-16 px-6 sm:px-12 max-w-7xl mx-auto w-full mb-20 case-study-node">
+        <div class="bg-[#0C0C0C] text-white rounded-3xl p-8 sm:p-12 md:p-16 flex flex-col items-center text-center gap-6 shadow-xl relative overflow-hidden">
+            <span class="text-xs uppercase font-mono tracking-widest text-red-500 font-bold">Comprehensive Specifications</span>
+            <h3 class="font-serif italic text-3xl sm:text-5xl text-white font-normal tracking-tight max-w-2xl leading-tight">
+                review whole presentation.
+            </h3>
+            <p class="text-zinc-400 font-light text-xs sm:text-sm max-w-md leading-relaxed">
+                Clicking the action hub maps an ultra-wide full screen vector previewer hosting the verified workflow blueprints and components natively via PDF formatting.
+            </p>
+            <button onclick="toggleDesignSystem()" class="mt-4 group border border-zinc-700 bg-zinc-800/40 hover:border-white hover:text-black hover:bg-white rounded-full px-8 py-3.5 uppercase tracking-widest font-medium text-xs transition-all duration-300 flex items-center gap-3">
+                Launch System PDF Canvas <i class="bi bi-fullscreen text-xs group-hover:scale-105 transition-transform duration-200"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- 04. INTERACTIVE LIGHTBOX MODAL -->
+    <div id="blueprintLightbox" class="fixed inset-0 z-[100] bg-black/95 opacity-0 pointer-events-none transition-opacity duration-400 ease-out p-4 sm:p-6 flex flex-col justify-between items-center backdrop-blur-md">
+        <div class="w-full flex justify-between items-center max-w-6xl mx-auto pt-2">
+            <div class="flex flex-col">
+                <span class="text-white text-xs uppercase font-mono tracking-widest font-bold">Maharashtra FYJC Project</span>
+                <span class="text-zinc-400 font-mono text-[10px] uppercase">Interactive PDF System Specification Sheet</span>
+            </div>
+            <button onclick="toggleDesignSystem()" class="text-white/60 hover:text-white border border-white/10 hover:border-white/40 bg-white/5 rounded-full p-2.5 transition-all duration-200 flex items-center justify-center">
+                <i class="bi bi-x-lg text-sm leading-none"></i>
+            </button>
+        </div>
+        
+        <div class="w-full max-w-6xl h-[80vh] md:h-[84vh] rounded-xl border border-zinc-800 bg-zinc-950 p-1 my-2 shadow-2xl relative overflow-hidden">
+            <object data="Group 9.pdf" type="application/pdf" class="w-full h-full rounded-lg">
+                <iframe src="Group 9.pdf" class="w-full h-full rounded-lg" frameborder="0">
+                    <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-6 text-white bg-zinc-950">
+                        <i class="bi bi-file-earmark-pdf text-4xl text-red-500 mb-4"></i>
+                        <p class="font-mono text-sm uppercase tracking-wider">PDF Viewer Engine Offline</p>
+                        <a href="Group 9.pdf" target="_blank" class="mt-4 text-xs underline text-zinc-400 uppercase tracking-widest hover:text-white">
+                            Download Document Directly
+                        </a>
+                    </div>
+                </iframe>
+            </object>
+        </div>
+
+        <div class="pb-1 text-center">
+            <p class="text-zinc-600 font-mono text-[9px] uppercase tracking-widest">System Document Vault Viewport — Esc to Terminate</p>
+        </div>
+    </div>
+
+    <!-- 05. FOOTER NAV -->
+    <footer class="w-full bg-[#0C0C0C] text-white py-16 px-6 sm:px-12 border-t border-zinc-900">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-8 w-full">
+            <div class="flex flex-col gap-1 text-center sm:text-left">
+                <h4 class="text-base font-bold uppercase tracking-wide">Next Phase Blueprint</h4>
+                <p class="text-zinc-500 font-light text-sm">Return to digital archive directory</p>
+            </div>
+            <a href="indexx.html" class="group border border-zinc-800 bg-zinc-900/50 hover:border-zinc-600 hover:text-red-500 rounded-full px-8 py-3 uppercase tracking-wider font-medium text-xs text-zinc-300 transition-all duration-300 flex items-center gap-2">
+                Return to Master Portfolio Index <i class="bi bi-arrow-right group-hover:translate-x-1 transition-transform duration-200"></i>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observedNodes = document.querySelectorAll('.case-study-node');
+            const generalOptions = { threshold: 0.05, rootMargin: "0px 0px -40px 0px" };
+
+            const viewObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-revealed');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, generalOptions);
+
+            observedNodes.forEach(node => viewObserver.observe(node));
+        });
+
+        function toggleDesignSystem() {
+            const lightbox = document.getElementById('blueprintLightbox');
+            if (lightbox.classList.contains('opacity-0')) {
+                lightbox.classList.remove('opacity-0', 'pointer-events-none');
+                lightbox.classList.add('opacity-100', 'pointer-events-auto');
+                document.body.style.overflow = 'hidden';
+            } else {
+                lightbox.classList.remove('opacity-100', 'pointer-events-auto');
+                lightbox.classList.add('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Global Esc key closure binding
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const lightbox = document.getElementById('blueprintLightbox');
+                if (lightbox && !lightbox.classList.contains('opacity-0')) {
+                    toggleDesignSystem();
+                }
+            }
+        })
+    </script>
+</body>
+</html>

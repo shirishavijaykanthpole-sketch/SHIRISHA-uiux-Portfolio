@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selected Digital Works — Portfolio Index</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #0C0C0C !important;
+            color: #F4F4F5;
+            font-family: 'Kanit', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .image-render-crisp {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+        }
+
+        /* Stacking Card Setup with custom offsets mimicking page 1 & 3 layout mechanics */
+        .stack-wrapper {
+            position: relative;
+        }
+
+        .workcase-interactive-node {
+            position: sticky;
+            background-color: #141414 !important;
+            box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease;
+            z-index: 10;
+        }
+
+        .workcase-interactive-node:nth-child(1) { top: 100px; margin-bottom: 250px; z-index: 11; }
+        .workcase-interactive-node:nth-child(2) { top: 130px; margin-bottom: 250px; z-index: 12; }
+        .workcase-interactive-node:nth-child(3) { top: 160px; margin-bottom: 250px; z-index: 13; }
+        .workcase-interactive-node:nth-child(4) { top: 190px; margin-bottom: 250px; z-index: 14; }
+        .workcase-interactive-node:nth-child(5) { top: 220px; margin-bottom: 250px; z-index: 15; }
+        .workcase-interactive-node:nth-child(6) { top: 250px; margin-bottom: 250px; z-index: 16; }
+        .workcase-interactive-node:nth-child(7) { top: 280px; margin-bottom: 250px; z-index: 17; }
+        .workcase-interactive-node:nth-child(8) { top: 310px; margin-bottom: 250px; z-index: 18; }
+        .workcase-interactive-node:nth-child(9) { top: 340px; margin-bottom: 100px; z-index: 19; }
+
+        /* Hardware-accelerated smooth fade elements */
+        .case-study-node {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .case-study-node.is-revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-[#0C0C0C] text-zinc-100">
+
+    <nav class="w-full fixed top-0 left-0 z-50 bg-[#0C0C0C]/80 backdrop-blur-md border-b border-zinc-900 py-5 px-6 sm:px-12">
+        <div class="max-w-7xl mx-auto flex justify-between items-center w-full">
+            <a href="indexx.html" class="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors duration-200 uppercase font-bold text-xs tracking-widest">
+                <i class="bi bi-arrow-left text-sm"></i> Back to Archive
+            </a>
+            <div class="flex items-center gap-6 font-mono text-[10px] uppercase text-zinc-500 tracking-wider">
+                <span>Category: Production Vault</span>
+                <span class="text-zinc-800">•</span>
+                <span>Active Infrastructure Index</span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-36 pb-16 px-6 sm:px-12 max-w-7xl mx-auto w-full border-b border-zinc-900">
+        <div class="grid grid-cols-12 gap-6 items-end w-full">
+            <div class="col-span-12 md:col-span-8 flex flex-col gap-2">
+                <span class="text-xs uppercase font-mono tracking-widest text-red-500 font-bold">Page 04 // Live Index Directory</span>
+                <h1 class="font-serif italic text-5xl sm:text-7xl md:text-8xl text-white font-normal tracking-tight leading-none mt-1">
+                    Selected Digital Works
+                </h1>
+            </div>
+            <div class="col-span-12 md:col-span-4 pb-2">
+                <p class="text-zinc-400 font-light text-sm sm:text-base leading-relaxed tracking-normal">
+                    A curated archive of live responsive deployments, platform architectures, and premium user experience modules designed for international ecosystems.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto w-full px-6 sm:px-12 py-12">
+        
+        <div class="w-full border border-zinc-800 rounded-2xl p-6 mb-16 flex items-start gap-4 bg-zinc-900/30 case-study-node is-revealed">
+            <div class="w-2 h-2 rounded-full bg-red-500 mt-2 animate-pulse shadow-[0_0_10px_#ef4444]"></div>
+            <div class="flex flex-col gap-0.5">
+                <h4 class="text-xs uppercase tracking-widest font-bold text-white">Geographic Routing Protocol</h4>
+                <p class="text-zinc-400 text-xs sm:text-sm font-light leading-relaxed">
+                    Certain active live staging platforms reside on distinct legacy enterprise servers. If latency values spike during authentication layers, route your network node configuration via a <strong>London, UK proxy gateway</strong>.
+                </p>
+            </div>
+        </div>
+
+        <div class="stack-wrapper flex flex-col w-full">
+
+            <div class="workcase-interactive-node border border-zinc-800 rounded-3xl p-6 sm:p-10 md:p-12 mb-6">
+                <div class="grid grid-cols-12 gap-8 items-center w-full">
+                    <div class="col-span-12 md:col-span-7 flex flex-col gap-4">
+                        <span class="font-mono text-xs font-bold text-red-500">/ 01</span>
+                        <div class="flex items-baseline gap-4 flex-wrap">
+                            <h3 class="font-serif italic text-3xl sm:text-5xl tracking-tight text-white">Wowinfotech UK</h3>
+                            <span class="font-mono text-[10px] uppercase tracking-widest text-zinc-400 border border-zinc-800 px-3 py-0.5 rounded-full bg-zinc-900/50">UK Server</span>
+                        </div>
+                        <p class="text-zinc-400 font-light text-sm sm:text-base leading-relaxed max-w-xl">
+                            Design orchestration and portal layout infrastructure engineered for Wowinfotech’s operational expansion inside the United Kingdom enterprise ecosystem[cite: 1140].
+                        </p>
+                        <div class="pt-2">
+                            <a href="https://www.wowinfotech.co.uk/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-white bg-white text-black hover:bg-transparent hover:text-white rounded-full px-5 py-2 uppercase tracking-widest font-medium text-[11px] transition-all duration-300">
+                                Launch System <i class="bi bi-box-arrow-up-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-span-12 md:col-span-5">
+                        <div class="bg-zinc-900/40 border border-zinc-800 rounded-2xl p-6 font-mono text-[11px] text-zinc-400 space-y-1">
+                            <div><span class="text-red-500">const</span> client = <span class="text-zinc-200">"Wowinfotech UK"</span>;</div>
+                            <div>this.<span class="text-zinc-200">scope</span> = <span class="text-zinc-500">"Enterprise Growth Hub"</span>;</div>
+                            <div>this.<span class="text-zinc-200">stack</span> = <span class="text-zinc-500">"Bootstrap / Vanilla JS"</span>;</div>
+                            <div>this.<span class="text-zinc-200">metrics</span> = <span class="text-zinc-500">"Fluid Layout Grid"</span>;</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="workcase-interactive-node border border-zinc-800 rounded-3xl p-6 sm:p-10 md:p-12 mb-6">
+                <div class="grid grid-cols-12 gap-8 items-center w-full">
+                    <div class="col-span-12 md:col-span-7 flex flex-col gap-4">
+                        <span class="font-mono text-xs font-bold text-red-500">/ 02</span>
+                        <div class="flex items-baseline gap-4 flex-wrap">
+                            <h3 class="font-serif italic text-3xl sm:text-5xl tracking-tight text-white">DNS Associates</h3>
+                            <span class="font-mono text-[10px] uppercase tracking-widest text-zinc-400 border border-zinc-800 px-3 py-0.5 rounded-full bg-zinc-900/50">UK Server</span>
+                        </div>
+                        <p class="text-zinc-400 font-light text-sm sm:text-base leading-relaxed max-w-xl">
+                            User interface scaling and systematic optimization for a major British financial consultancy hub, prioritizing dashboard interaction streams and clear service hierarchy[cite: 1142].
+                        </p>
+                        <div class="pt-2">
+                            <a href="https://www.dnsassociates.co.uk/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-white bg-white text-black hover:bg-transparent hover:text-white rounded-full px-5 py-2 uppercase tracking-widest font-medium text-[11px] transition-all duration-300">
+                                Launch System <i class="bi bi-box-arrow-up-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-span-12 md:col-span-5">
+                        <div class="bg-zinc-900/40 border border-zinc-800 rounded-2xl p-6 font-mono text-[11px] text-zinc-400 space-y-1">
+                            <div><span class="text-red-500">const</span> client = <span class="text-zinc-200">"DNS Associates"</span>;</div>
+                            <div>this.<span class="text-zinc-200">type</span> = <span class="text-zinc-500">"Financial Consultancy Network"</span>;</div>
+                            <div>this.<span class="text-zinc-200">uxFocus</span> = <span class="text-zinc-500">"Complex Analytics Matrices"</span>;</div>
+                            <div>this.<span class="text-zinc-200">layout</span> = <span class="text-zinc-500">"Adaptive Dashboard Structure"</span>;</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="workcase-interactive-node border border-zinc-800 rounded-3xl p-6 sm:p-10 md:p-12 mb-6">
+                <div class="grid grid-cols-12 gap-8 items-center w-full">
+                    <div class="col-span-12 md:col-span-7 flex flex-col gap-4">
+                        <span class="font-mono text-xs font-bold text-red-500">/ 03</span>
+                        <div class="flex items-baseline gap-4 flex-wrap">
+                            <h3 class="font-serif italic text-3xl sm:text-5xl tracking-tight text-white">SeekJobs AI</h3>
+                            <span class="font-mono text-[10px] uppercase tracking-widest text-zinc-400 border border-zinc-800 px-3 py-0.5 rounded-full bg-zinc-900/50">UK Server</span>
+                        </div>
+                        <p class="text-zinc-400 font-light text-sm sm:text-base leading-relaxed max-w-xl">
+                            Interface architecture engineered for an AI-assisted talent discovery environment, focusing on clean search input control patterns and candidate matching tables.
+                        </p>
+                        <div class="pt-2">
+                            <a href="https://seekjobs.ai/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-white bg-white text-black hover:bg-transparent hover:text-white rounded-full px-5 py-2 uppercase tracking-widest font-medium text-[11px] transition-all duration-300">
+                                Launch System <i class="bi bi-box-arrow-up-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-span-12 md:col-span-5">
+                        <div class="bg-zinc-900/40 border border-zinc-800 rounded-2xl p-6 font-mono text-[11px] text-zinc-400 space-y-1">
+                            <div><span class="text-red-500">const</span> client = <span class="text-zinc-200">"SeekJobs AI"</span>;</div>
+                            <div>this.<span class="text-zinc-200">engine</span> = <span class="text-zinc-500">"Predictive Search Systems"</span>;</div>
+                            <div>this.<span class="text-zinc-200">module</span> = <span class="text-zinc-500">"Candidate Verification Architecture"</span>;</div>
+                            <div>this.<span class="text-zinc-200">state</span> = <span class="text-zinc-500">"Optimized Fluid Node"</span>;</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="workcase-interactive-node border border-zinc-800 rounded-3xl p-6 sm:p-10 md:p-12 mb-6">
+                <div class="grid grid-cols-12 gap-8 items-center w-full">
+                    <div class="col-span-12 md:col-span-7 flex flex-col gap-4">
+                        <span class="font-mono text-xs font-bold text-red-500">/ 04</span>
+                        <div class="flex items-baseline gap-4 flex-wrap">
+                            <h3 class="font-serif italic text-3xl sm:text-5xl tracking-tight text-white">Visual Traces</h3>
+                            <span class="font-mono text-[10px] uppercase tracking-widest text-zinc-400 border border-zinc-800 px-3 py-0.5 rounded-full bg-zinc-900/50">IN Server</span>
+                        </div>
+                        <p class="text-zinc-400 font-light text-sm sm:text-base leading-relaxed max-w-xl">
+                            A highly customized multimedia showcase platform built around smooth scroll events, precise image ratios, and minimalist branding layout modules.
+                        </p>
+                        <div class="pt-2">
+                            <a href="https://www.visualtraces.in/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-white bg-white text-black hover:bg-transparent hover:text-white rounded-full px-5 py-2 uppercase tracking-widest font-medium text-[11px] transition-all duration-300">
+                                Launch System <i class="bi bi-box-arrow-up-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-span-12 md:col-span-5">
+                        <div class="bg-zinc-900/40 border border-zinc-800 rounded-2xl p-6 font-mono text-[11px] text-zinc-400 space-y-1">
+                            <div><span class="text-red-500">const</span> client = <span class="text-zinc-200">"Visual Traces"</span>;</div>
+                            <div>this.<span class="text-zinc-200">strategy</span> = <span class="text-zinc-500">"High-End Multimedia Showroom"</span>;</div>
+                            <div>this.<span class="text-zinc-200">animation</span> = <span class="text-zinc-500">"Viewport Tracking Hooks"</span>;</div>
+                            <div>this.<span class="text-zinc-200">theme</span> = <span class="text-zinc-500">"Minimalist Absolute Canvas"</span>;</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="workcase-interactive-node border border-zinc-800 rounded-3xl p-6 sm:p-10 md:p-12 mb-6">
+                <div class="grid grid-cols-12 gap-8 items-center w-full">
+                    <div class="col-span-12 md:col-span-7 flex flex-col gap-4">
+                        <span class="font-mono text-xs font-bold text-red-500">/ 05</span>
+                        <div class="flex items-baseline gap-4 flex-wrap">
+                            <h3 class="font-serif italic text-3xl sm:text-5xl tracking-tight text-white">Trimbaa Wines</h3>
+                            <span class="font-mono text-[10px] uppercase tracking-widest text-zinc-400 border border-zinc-800 px-3 py-0.5 rounded-full bg-zinc-900/50">IN Server</span>
+                        </div>
+                        <p class="text-zinc-400 font-light text-sm sm:text-base leading-relaxed max-w-xl">
+                            E-commerce presentation interface and immersive digital catalog layout developed to capture the premium branding requirements of an estate vineyard.
+                        </p>
+                        <div class="pt-2">
+                            <a href="https://www.trimbaawines.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-white bg-white text-black hover:bg-transparent hover:text-white rounded-full px-5 py-2 uppercase tracking-widest font-medium text-[11px] transition-all duration-300">
+                                Launch System <i class="bi bi-box-arrow-up-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-span-12 md:col-span-5">
+                        <div class="bg-zinc-900/40 border border-zinc-800 rounded-2xl p-6 font-mono text-[11px] text-zinc-400 space-y-1">
+                            <div><span class="text-red-500">const</span> client = <span class="text-zinc-200">"Trimbaa Wines"</span>;</div>
+                            <div>this.<span class="text-zinc-200">segment</span> = <span class="text-zinc-500">"Bespoke E-Commerce Retail"</span>;</div>
+                            <div>this.<span class="text-zinc-200">uxPattern</span> = <span class="text-zinc-500">"Immersive Editorial Catalog"</span>;</div>
+                            <div>this.<span class="text-zinc-200">ratios</span> = <span class="text-zinc-500">"Asymmetric Aspect Ratios"</span>;</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="workcase-interactive-node border border-zinc-800 rounded-3xl p-6 sm:p-10 md:p-12 mb-6">
+                <div class="grid grid-cols-12 gap-8 items-center w-full">
+                    <div class="col-span-12 md:col-span-7 flex flex-col gap-4">
+                        <span class="font-mono text-xs font-bold text-red-500">/ 06</span>
+                        <div class="flex items-baseline gap-4 flex-wrap">
+                            <h3 class="font-serif italic text-3xl sm:text-5xl tracking-tight text-white">Bonvista</h3>
+                            <span class="font-mono text-[10px] uppercase tracking-widest text-zinc-400 border border-zinc-800 px-3 py-0.5 rounded-full bg-zinc-900/50">IN Server</span>
+                        </div>
+                        <p class="text-zinc-400 font-light text-sm sm:text-base leading-relaxed max-w-xl">
+                            Responsive corporate application design optimized from the ground up to unify front-end performance metrics with crisp interface typography.
+                        </p>
+                        <div class="pt-2">
+                            <a href="https://www.bonvista.in/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-white bg-white text-black hover:bg-transparent hover:text-white rounded-full px-5 py-2 uppercase tracking-widest font-medium text-[11px] transition-all duration-300">
+                                Launch System <i class="bi bi-box-arrow-up-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-span-12 md:col-span-5">
+                        <div class="bg-zinc-900/40 border border-zinc-800 rounded-2xl p-6 font-mono text-[11px] text-zinc-400 space-y-1">
+                            <div><span class="text-red-500">const</span> client = <span class="text-zinc-200">"Bonvista"</span>;</div>
+                            <div>this.<span class="text-zinc-200">architecture</span> = <span class="text-zinc-500">"Responsive Corporate Suite"</span>;</div>
+                            <div>this.<span class="text-zinc-200">typography</span> = <span class="text-zinc-500">"Variable Scale Metrics"</span>;</div>
+                            <div>this.<span class="text-zinc-200">speed</span> = <span class="text-zinc-500">"High Precision CSS Tokenization"</span>;</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="workcase-interactive-node border border-zinc-800 rounded-3xl p-6 sm:p-10 md:p-12 mb-6">
+                <div class="grid grid-cols-12 gap-8 items-center w-full">
+                    <div class="col-span-12 md:col-span-7 flex flex-col gap-4">
+                        <span class="font-mono text-xs font-bold text-red-500">/ 07</span>
+                        <div class="flex items-baseline gap-4 flex-wrap">
+                            <h3 class="font-serif italic text-3xl sm:text-5xl tracking-tight text-white">Banyan Finance</h3>
+                            <span class="font-mono text-[10px] uppercase tracking-widest text-zinc-400 border border-zinc-800 px-3 py-0.5 rounded-full bg-zinc-900/50">Staging Platform</span>
+                        </div>
+                        <p class="text-zinc-400 font-light text-sm sm:text-base leading-relaxed max-w-xl">
+                            Interactive application wireframing and remote staging environment managing layout calculations for digital secure-banking processes.
+                        </p>
+                        <div class="pt-2">
+                            <a href="https://wow1.in/3/banyanfinance/index.php" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-white bg-white text-black hover:bg-transparent hover:text-white rounded-full px-5 py-2 uppercase tracking-widest font-medium text-[11px] transition-all duration-300">
+                                Launch System <i class="bi bi-box-arrow-up-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-span-12 md:col-span-5">
+                        <div class="bg-zinc-900/40 border border-zinc-800 rounded-2xl p-6 font-mono text-[11px] text-zinc-400 space-y-1">
+                            <div><span class="text-red-500">const</span> sandbox = <span class="text-zinc-200">"Banyan Finance"</span>;</div>
+                            <div>this.<span class="text-zinc-200">environment</span> = <span class="text-zinc-500">"Secure Banking Framework"</span>;</div>
+                            <div>this.<span class="text-zinc-200">wireframe</span> = <span class="text-zinc-500">"Interactive Prototype Grid"</span>;</div>
+                            <div>this.<span class="text-zinc-200">gateway</span> = <span class="text-zinc-500">"Transaction Validation Modules"</span>;</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="workcase-interactive-node border border-zinc-800 rounded-3xl p-6 sm:p-10 md:p-12 mb-6">
+                <div class="grid grid-cols-12 gap-8 items-center w-full">
+                    <div class="col-span-12 md:col-span-7 flex flex-col gap-4">
+                        <span class="font-mono text-xs font-bold text-zinc-500">/ 08</span>
+                        <div class="flex items-baseline gap-4 flex-wrap">
+                            <h3 class="font-serif italic text-3xl sm:text-5xl tracking-tight text-zinc-500">Ekhande Group</h3>
+                            <span class="font-mono text-[10px] uppercase tracking-widest text-zinc-500 border border-zinc-800 px-3 py-0.5 rounded-full bg-zinc-900">Decommissioned</span>
+                        </div>
+                        <p class="text-zinc-400 font-light text-sm sm:text-base leading-relaxed max-w-xl">
+                            Development sandbox instance session has reached its retention deadline. Staging connection path has been securely decommissioned and archived[cite: 754].
+                        </p>
+                        <div class="pt-2">
+                            <button disabled class="inline-flex items-center gap-2 border border-zinc-800 bg-zinc-900 text-zinc-500 rounded-full px-5 py-2 uppercase tracking-widest font-medium text-[11px] cursor-not-allowed">
+                                Staging Offline <i class="bi bi-lock-fill text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-span-12 md:col-span-5">
+                        <div class="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-6 font-mono text-[11px] text-zinc-500 space-y-1 select-none">
+                            <div><span class="text-zinc-700">delete</span> sandbox.<span class="text-zinc-500">instance</span>;</div>
+                            <div>this.<span class="text-zinc-400">status</span> = <span class="text-zinc-500">"Terminated"</span>;</div>
+                            <div>this.<span class="text-zinc-400">retention</span> = <span class="text-zinc-500">"Expired"</span>;</div>
+                            <div>this.<span class="text-zinc-400">archive</span> = <span class="text-zinc-500">"Secure_Vault_08"</span>;</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="workcase-interactive-node border border-zinc-800 rounded-3xl p-6 sm:p-10 md:p-12 mb-20">
+                <div class="grid grid-cols-12 gap-8 items-center w-full">
+                    <div class="col-span-12 md:col-span-7 flex flex-col gap-4">
+                        <span class="font-mono text-xs font-bold text-zinc-500">/ 09</span>
+                        <div class="flex items-baseline gap-4 flex-wrap">
+                            <h3 class="font-serif italic text-3xl sm:text-5xl tracking-tight text-zinc-500">Young Little Stars</h3>
+                            <span class="font-mono text-[10px] uppercase tracking-widest text-zinc-500 border border-zinc-800 px-3 py-0.5 rounded-full bg-zinc-900">Expired</span>
+                        </div>
+                        <p class="text-zinc-400 font-light text-sm sm:text-base leading-relaxed max-w-xl">
+                            Interactive portal deployment lifecycle complete. The corresponding target space allocation has timed out and is currently disconnected[cite: 754].
+                        </p>
+                        <div class="pt-2">
+                            <button disabled class="inline-flex items-center gap-2 border border-zinc-800 bg-zinc-900 text-zinc-500 rounded-full px-5 py-2 uppercase tracking-widest font-medium text-[11px] cursor-not-allowed">
+                                Domain Offline <i class="bi bi-lock-fill text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-span-12 md:col-span-5">
+                        <div class="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-6 font-mono text-[11px] text-zinc-400 space-y-1 select-none">
+                            <div><span class="text-zinc-700">delete</span> domain.<span class="text-zinc-500">allocation</span>;</div>
+                            <div>this.<span class="text-zinc-400">lifecycle</span> = <span class="text-zinc-500">"Complete"</span>;</div>
+                            <div>this.<span class="text-zinc-400">dnsState</span> = <span class="text-zinc-500">"Disconnected"</span>;</div>
+                            <div>this.<span class="text-zinc-400">server</span> = <span class="text-zinc-500">"Null Node Mapping"</span>;</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="w-full bg-[#050505] text-white pt-24 pb-12 px-6 sm:px-12 border-t border-zinc-900 relative overflow-hidden">
+        <div class="absolute top-10 left-1/2 -translate-x-1/2 font-sans font-black text-[11vw] tracking-[0.2em] leading-none text-zinc-900/10 pointer-events-none select-none uppercase">
+            SHIRISHA
+        </div>
+
+        <div class="max-w-7xl mx-auto flex flex-col gap-16 relative z-10 w-full">
+            <div class="w-full flex flex-wrap justify-between items-end gap-8 border-b border-zinc-800/60 pb-12">
+                <div class="flex flex-col gap-2">
+                    <h2 class="text-4xl sm:text-6xl font-serif italic tracking-tight text-white font-normal">
+                        Shirisha<span class="text-red-500">.</span>
+                    </h2>
+                    <span class="text-[10px] tracking-[0.2em] font-mono uppercase text-zinc-500">UI/UX Designer &amp; Researcher</span>
+                </div>
+                <div>
+                    <a href="mailto:shirishavijaykanthpole@gmail.com" class="group border border-zinc-800 bg-zinc-900/50 hover:border-zinc-500 hover:text-red-500 rounded-full px-8 py-3 uppercase tracking-wider font-medium text-xs text-zinc-300 transition-all duration-300 flex items-center gap-2">
+                        Let's Connect <i class="bi bi-arrow-right group-hover:translate-x-1 transition-transform duration-200"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 border-b border-zinc-800/60 pb-16">
+                <div class="flex flex-col gap-4">
+                    <span class="text-[10px] tracking-widest font-mono uppercase text-zinc-600 font-bold">Workspace</span>
+                    <div class="flex flex-col gap-2.5 text-sm font-light text-zinc-400">
+                        <a href="indexx.html" class="hover:text-white transition-colors duration-200">Showcase Index</a>
+                        <a href="#" class="hover:text-white transition-colors duration-200">Design Toolkit</a>
+                        <a href="#" class="hover:text-white transition-colors duration-200">Live Active Vault</a>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <span class="text-[10px] tracking-widest font-mono uppercase text-zinc-600 font-bold">Socials</span>
+                    <div class="flex flex-col gap-2.5 text-sm font-light text-zinc-400">
+                        <a href="https://linkedin.com/in/shirishapole" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-200 flex items-center gap-2">
+                            <span class="w-1 h-1 rounded-full bg-red-500"></span> LinkedIn
+                        </a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-200 flex items-center gap-2">
+                            <span class="w-1 h-1 rounded-full bg-red-500"></span> Behance
+                        </a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-200 flex items-center gap-2">
+                            <span class="w-1 h-1 rounded-full bg-red-500"></span> Instagram
+                        </a>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <span class="text-[10px] tracking-widest font-mono uppercase text-zinc-600 font-bold">Contact Hub</span>
+                    <div class="flex flex-col gap-2 text-sm font-light text-zinc-400">
+                        <p class="text-zinc-500 text-xs">Based in Pune, Maharashtra, India</p>
+                        <a href="mailto:shirishavijaykanthpole@gmail.com" class="hover:text-white transition-colors duration-200 mt-1">shirishavijaykanthpole@gmail.com</a>
+                        <a href="tel:+917517951864" class="hover:text-white transition-colors duration-200">+91 7517951864</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full flex justify-between items-center text-[11px] font-mono text-zinc-600 tracking-wider">
+                <span>© 2026 Shirisha. All rights reserved.</span>
+                <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="hover:text-white transition-colors duration-200 uppercase flex items-center gap-2 group">
+                    Back to Top 
+                    <span class="w-6 h-6 border border-zinc-800 rounded-full flex items-center justify-center text-[10px] group-hover:bg-red-600 group-hover:border-red-600 group-hover:text-white transition-all duration-300">↑</span>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observedNodes = document.querySelectorAll('.case-study-node');
+            const generalOptions = { threshold: 0.05, rootMargin: "0px 0px -40px 0px" };
+
+            const viewObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-revealed');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, generalOptions);
+
+            observedNodes.forEach(node => viewObserver.observe(node));
+        });
+    </script>
+</body>
+</html>
